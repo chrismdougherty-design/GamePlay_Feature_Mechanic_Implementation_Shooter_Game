@@ -14,32 +14,8 @@ optimization technique compared to traditional object spawning.
 
 ## Gameplay Flowchart
 
-[Game Start]
-      ↓
-[Initialize Object Pool]
-      ↓
-[Spawn Player & Enemy]
-      ↓
-[Gameplay Loop]
-      ↓
-[Player Input Detected]
-      ↓
-[Player Movement]
-      ↓
-[Central Enemy Shoots (Pooled Projectiles)]
-      ↓
-[Collision Check]
-   ┌───────────────┬────────────────┐
-   │               │                │
-[Collectible]   [Hazard Hit]   [Projectile Hit]
-   │               │                │
-[Increase Score] [Reduce Health] [Reduce Health]
-   │               │                │
-[Deactivate Item]   └──────┬────────┘
-      ↓                   ↓
-[Return to Gameplay Loop] [Health <= 0?]
-                              ↓ Yes
-                          [Game Over]
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/f60531d9-683a-4cb7-a184-3194ded2fb78" />
+
 
 ## How to Run
 1. Open the project in Unity
