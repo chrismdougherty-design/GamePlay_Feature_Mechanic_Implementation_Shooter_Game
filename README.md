@@ -30,4 +30,4 @@ allocations and garbage collection spikes.
 [Insert your video link]
 
 ## GitHub Link
-[Insert repository link]
+[[Insert repository link]](https://github.com/chrismdougherty-design/GamePlay_Feature_Mechanic_Implementation_Shooter_Game.git)
