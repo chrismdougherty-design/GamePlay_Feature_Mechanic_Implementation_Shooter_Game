@@ -8,31 +8,29 @@ public class EnemyShooter : MonoBehaviour
     private float fireTimer;
     private Transform player;
     private ObjectPooler pooler;
-    private GameLoopManager gameManager;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         pooler = FindObjectOfType<ObjectPooler>();
-        gameManager = FindObjectOfType<GameLoopManager>();
     }
 
     void Update()
     {
-        // ✅ STOP enemy logic if game is paused, menu, game over, or victory
-        if (gameManager == null ||
-            gameManager.currentState != GameLoopManager.GameState.Playing)
+        if (pooler == null)
             return;
 
-        if (player == null || pooler == null)
-            return;
+        if (player == null)
+        {
+            GameObject p = GameObject.FindGameObjectWithTag("Player");
+            if (p == null) return;
+            player = p.transform;
+        }
 
-        float distance = Vector2.Distance(transform.position, player.position);
+        float dist = Vector2.Distance(transform.position, player.position);
 
-        if (distance <= detectionRange)
+        if (dist <= detectionRange)
         {
             fireTimer += Time.deltaTime;
-
             if (fireTimer >= fireRate)
             {
                 Shoot();
@@ -48,7 +46,8 @@ public class EnemyShooter : MonoBehaviour
 
         bullet.transform.position = transform.position;
 
-        Vector2 dir = player.position - transform.position;
-        bullet.GetComponent<Bullet>().Fire(dir);
+        Bullet b = bullet.GetComponent<Bullet>();
+        if (b != null)
+            b.Fire(player.position - transform.position);
     }
 }

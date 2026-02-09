@@ -6,7 +6,7 @@ public class ObjectPooler : MonoBehaviour
     public GameObject bulletPrefab;
     public int poolSize = 20;
 
-    private List<GameObject> pool = new List<GameObject>();
+    private List<GameObject> bullets = new List<GameObject>();
 
     void Awake()
     {
@@ -14,16 +14,16 @@ public class ObjectPooler : MonoBehaviour
         {
             GameObject bullet = Instantiate(bulletPrefab);
             bullet.SetActive(false);
-            pool.Add(bullet);
+            bullets.Add(bullet);
         }
     }
 
     public GameObject GetBullet()
     {
-        foreach (GameObject bullet in pool)
+        for (int i = 0; i < bullets.Count; i++)
         {
-            if (!bullet.activeInHierarchy)
-                return bullet;
+            if (!bullets[i].activeInHierarchy)
+                return bullets[i];
         }
         return null;
     }

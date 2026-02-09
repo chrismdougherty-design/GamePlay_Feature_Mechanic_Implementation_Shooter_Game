@@ -4,7 +4,19 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 8f;
     public int damage = 10;
+    public float lifeTime = 4f;
+
     private Vector2 direction;
+
+    void OnEnable()
+    {
+        Invoke(nameof(ReturnToPool), lifeTime);
+    }
+
+    void OnDisable()
+    {
+        CancelInvoke();
+    }
 
     public void Fire(Vector2 dir)
     {
@@ -25,11 +37,12 @@ public class Bullet : MonoBehaviour
             if (health != null)
                 health.TakeDamage(damage);
 
-            gameObject.SetActive(false);
+            ReturnToPool();
         }
-        else if (other.CompareTag("Wall"))
-        {
-            gameObject.SetActive(false);
-        }
+    }
+
+    void ReturnToPool()
+    {
+        gameObject.SetActive(false);
     }
 }
