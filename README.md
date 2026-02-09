@@ -27,7 +27,10 @@ Projectiles are reused instead of destroyed, reducing memory
 allocations and garbage collection spikes.
 
 ## Video Demo
-[Insert your video link]
+[[Insert your video link]]
+(https://www.loom.com/share/c97b429122934427862bd0cf5d42e31f)
+
+(https://youtu.be/xWP8iy6Xhew)
 
 ## GitHub Link
 [[Insert repository link]](https://github.com/chrismdougherty-design/GamePlay_Feature_Mechanic_Implementation_Shooter_Game.git)
